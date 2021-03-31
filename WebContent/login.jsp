@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            Webflix
+            Proyecto LP2
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
                     <div class="input-group">
                         <input type="password" class="form-control" id="psw" placeholder="Contraseña">
                         <div class="input-group-append">
-                            <a href="#" class="input-group-text" id="show-hide" onclick=showHide()><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                            <a href="#" class="input-group-text" id="revelaPassword" onclick=revelaPassword()><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -65,21 +65,11 @@
             <p class="text-muted">© Copyright 2020 - 2021 by Webflix. All Rights Reserved.</p>
         </div>
     </div>
-    <!-- Script para mostrar/ocultar la contraseña -->
-    <script>
-        function showHide() {
-            let eye = document.getElementById('show-hide');
-            let psw = document.getElementById('psw');
-            if(psw.type === 'password') {
-                eye.children[0].className = 'fa fa-eye';
-                psw.type = 'text'
-            } else {
-                eye.children[0].className = 'fa fa-eye-slash';
-                psw.type = 'password'
-            }
-        }
-    </script>
-    <!-- Incluyendo librerias necesarias para JS -->
+    
+    <!-- Incluimos tools.js -->
+    <script src="js/tools.js"></script>
+    
+    <!-- Incluyendo librerias JS necesarias para Bootstrap -->
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>

@@ -13,7 +13,7 @@ body {
     background-color: white;
 }
 
-#show-hide, #show-hide:hover {
+#revelaPassword, #revelaPassword:hover {
     text-decoration: none;
     color:#333;
 }
