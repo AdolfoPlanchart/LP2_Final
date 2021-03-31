@@ -1,0 +1,28 @@
+html ,
+body {
+    height: 95%;
+}
+
+body {
+    background-image: url('https://i.stack.imgur.com/zRInk.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.form-bg {
+    background-color: white;
+}
+
+#show-hide, #show-hide:hover {
+    text-decoration: none;
+    color:#333;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: #343a40;
+    color: #f3f3f3;
+}
