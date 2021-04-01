@@ -13,6 +13,7 @@ public class BeanUsuario implements Serializable {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
+	private String psw;
 	
 	public BeanUsuario() {
 	}
@@ -55,6 +56,14 @@ public class BeanUsuario implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getPsw() {
+		return psw;
+	}
+
+	public void setPsw(String psw) {
+		this.psw = psw;
 	}
 	
 	

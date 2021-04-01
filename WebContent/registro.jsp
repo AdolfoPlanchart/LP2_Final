@@ -33,28 +33,28 @@
     <!-- Login form -->
     <div class="container h-100 d-flex justify-content-center align-items-center">
         <div class="mw-50 form-bg p-4 border rounded">
-            <form>
+            <form action=ServletRegistro method="post">
                 <h4>Ingresa tus datos</h4>
                 <hr/>
                 <div class="form-row">
                     <div class="col-6">
                         <label for="nombre">Nombre(s)</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Pepito">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Pepito">
                     </div>
                     <div class="col-6">
                         <label for="apellido">Apellido(s)</label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Perez">
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Perez">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo Electronico</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Correo Electronico">
                     <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo electronico con nadie.</small>
                 </div>
                 <div class="form-group">
                     <label for="psw">Contraseña</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="psw" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="psw" name="psw" placeholder="Contraseña">
                         <div class="input-group-append">
                             <a href="#" class="input-group-text" id="revelaPassword" onclick=revelaPassword()><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         </div>
@@ -63,10 +63,10 @@
                 <label for="celular">Número de Teléfono</label>
                 <div class="form-row">
                     <div class="form-group col-md-4 col-2">
-                        <input type="text" class="form-control text-center" id="codigopais" value='+51'>
+                        <input type="text" class="form-control text-center" id="codigopais" name="codigopais" value='+51'>
                     </div>
                     <div class="form-group col-md-8 col-10">
-                        <input type="text" class="form-control" id="celular" placeholder="912345678">
+                        <input type="text" class="form-control" id="celular" name="celular" placeholder="912345678">
                     </div>
                 </div>
                 <div class="form-group form-check">
