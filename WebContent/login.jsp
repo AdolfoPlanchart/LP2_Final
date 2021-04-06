@@ -63,6 +63,7 @@
             </form>
         </div>
     </div>
+    <h1>HOLA MUNDO</h1>
     <div class="footer">
         <div class="container h-100 d-flex justify-content-center align-items-center">
             <p class="text-muted">© Copyright 2020 - 2021 by Webflix. All Rights Reserved.</p>

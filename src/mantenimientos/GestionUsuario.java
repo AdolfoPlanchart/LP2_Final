@@ -3,6 +3,7 @@ package mantenimientos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import beans.BeanUsuario;
@@ -79,7 +80,7 @@ public class GestionUsuario implements InterfaceUsuario {
 		
 		try {
 			conn = ConnMySQL.getConexion();
-			sql = "INSERT INTO usuarios VALUES(DEFAULT,?,?,?,?,?);";
+			sql = "INSERT INTO usuarios (name,last_name,email,phone_number,pswrd) VALUES(?,?,?,?,?);";
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1,usuario.getName());
@@ -89,6 +90,11 @@ public class GestionUsuario implements InterfaceUsuario {
 			stmt.setString(5,usuario.getPsw());
 			
 			seRegistro = stmt.executeUpdate() > 0;
+			stmt.close();
+			conn.close();
+		} catch(SQLException e) {
+			System.out.println("Error SQL en GestionUsuario.registrarUsuario: " + e.getMessage());
+			System.out.println("Codigo de Error: " + e.getErrorCode());
 		} catch(Exception e) {
 			System.out.println("Error en GestionUsuario.registrarUsuario: " + e.getMessage());
 		}
