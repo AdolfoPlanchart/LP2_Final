@@ -59,7 +59,7 @@
                 </div>
                 <input type="submit" class="btn btn-primary btn-block" value="Iniciar Sesión">
                 <hr/>
-                <p class="text-muted">No tienes una cuenta? <a href="#">Registrate aquí</a>.</p>
+                <p class="text-muted">No tienes una cuenta? Porfavor, <a href="#">Registrate aquí</a>.</p>
             </form>
         </div>
     </div>
