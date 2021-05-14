@@ -37,7 +37,7 @@
             	<h1>
 					${msg}
 				</h1>
-                <h4>Iniciar Sesión</h4>
+                <h4>Inicia Sesión aqui:</h4>
                 <hr/>
                 <div class="form-group">
                     <label for="email">Correo Electronico</label>
