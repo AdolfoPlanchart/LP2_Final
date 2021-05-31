@@ -1,4 +1,4 @@
-package conexiones;
+package net.proyecto.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

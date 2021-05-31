@@ -1,4 +1,4 @@
-package mantenimientos;
+package net.proyecto.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import beans.BeanUsuario;
-import conexiones.ConnMySQL;
-import interfaces.InterfaceUsuario;
+import net.proyecto.entidad.BeanUsuario;
+import net.proyecto.interfaz.InterfaceUsuario;
+import net.proyecto.utils.ConnMySQL;
 
 public class GestionUsuario implements InterfaceUsuario {
 	@Override

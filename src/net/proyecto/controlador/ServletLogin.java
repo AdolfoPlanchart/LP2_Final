@@ -1,4 +1,4 @@
-package servlets;
+package net.proyecto.controlador;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.BeanUsuario;
-import mantenimientos.GestionUsuario;
+import net.proyecto.dao.GestionUsuario;
+import net.proyecto.entidad.BeanUsuario;
 
 /**
  * Servlet implementation class ServletLogin

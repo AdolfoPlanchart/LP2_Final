@@ -1,4 +1,4 @@
-package beans;
+package net.proyecto.entidad;
 
 import java.io.Serializable;
 

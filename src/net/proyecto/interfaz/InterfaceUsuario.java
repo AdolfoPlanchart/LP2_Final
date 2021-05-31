@@ -1,8 +1,8 @@
-package interfaces;
+package net.proyecto.interfaz;
 
 import java.util.ArrayList;
 
-import beans.BeanUsuario;
+import net.proyecto.entidad.BeanUsuario;
 
 public interface InterfaceUsuario {
 	public ArrayList<BeanUsuario> listarUsuarios();
