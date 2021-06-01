@@ -1,8 +1,8 @@
-package net.solicitud.interfaces;
+package net.proyecto.interfaz;
 
 import java.util.List;
 
-import beans.Solicitud;
+import net.proyecto.entidad.Solicitud;
 
 public interface SolicitudDao {
 	public int save(Solicitud bean);

@@ -9,7 +9,7 @@ public class ConnMySQL {
 		Connection conn = null;
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Proyecto_LP2?" + 
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Proyecto_LP22?" + 
 												   "user=root&password=mysql");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -1,4 +1,4 @@
-package solicitud.dao;
+package net.proyecto.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Solicitud;
-import conexiones.MySqlConexion;
-import net.solicitud.interfaces.SolicitudDao;
+import net.proyecto.entidad.Solicitud;
+import net.proyecto.interfaz.SolicitudDao;
+import net.proyecto.utils.ConnMySQL;
 
 public class MySqlSolicitudDAO  implements SolicitudDao{
 
@@ -21,7 +21,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 		PreparedStatement pstm=null;
 		try {
 			//1
-			cn=MySqlConexion.getConexion();
+			cn=ConnMySQL.getConexion();
 			//2
 			String sql="insert into tb_solicitud values(null,?,?,?)"; 
 			//3
@@ -34,7 +34,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 		
 			//5
 			salida=pstm.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		finally {
@@ -56,7 +56,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 		PreparedStatement pstm=null;
 		try {
 			//1
-			cn=MySqlConexion.getConexion();
+			cn=ConnMySQL.getConexion();
 			//2
 			String sql="update tb_solicitud set ? where cod_solicitud=?"; 
 			//3
@@ -69,7 +69,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 			
 			//5
 			salida=pstm.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		finally {
@@ -91,7 +91,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 		PreparedStatement pstm=null;
 		try {
 			//1
-			cn=MySqlConexion.getConexion();
+			cn=ConnMySQL.getConexion();
 			//2
 			String sql="delete from tb_solicitud where cod_solcitud=?"; 
 			//3
@@ -100,7 +100,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 			pstm.setInt(1, cod);
 			//5
 			salida=pstm.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		finally {
@@ -123,7 +123,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 		ResultSet rs=null;
 		try {
 			//1
-			cn=MySqlConexion.getConexion();
+			cn=ConnMySQL.getConexion();
 			//2
 			String sql="select *from tb_docente"; 
 			//3
@@ -145,7 +145,7 @@ public class MySqlSolicitudDAO  implements SolicitudDao{
 				//9
 				lista.add(bean);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		finally {

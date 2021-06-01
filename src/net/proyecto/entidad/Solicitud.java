@@ -1,4 +1,4 @@
-package beans;
+package net.proyecto.entidad;
 
 public class Solicitud {
 	private int codigo,codigoTrabajador;
