@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import net.proyecto.entidad.BeanUsuario;
-import net.proyecto.interfaz.InterfaceUsuario;
+import net.proyecto.entidad.Usuario;
+import net.proyecto.interfaz.UsuarioDAO;
 import net.proyecto.utils.ConnMySQL;
 
-public class GestionUsuario implements InterfaceUsuario {
+public class MySqlUsuarioDAO implements UsuarioDAO {
 	@Override
-	public BeanUsuario validarLogin(String email, String psw){
-		BeanUsuario usuario = null;
+	public Usuario validarLogin(String email, String psw){
+		Usuario usuario = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = null;
@@ -29,7 +29,7 @@ public class GestionUsuario implements InterfaceUsuario {
 			
 			if(rs.next()) {
 				System.out.println(rs.getString("name"));
-				usuario = new BeanUsuario();
+				usuario = new Usuario();
 				usuario.setName(rs.getString("name"));
 				usuario.setLastName(rs.getString("last_name"));
 			}
@@ -40,9 +40,9 @@ public class GestionUsuario implements InterfaceUsuario {
 	}
 
 	@Override
-	public ArrayList<BeanUsuario> listarUsuarios() {
-		BeanUsuario usuario = null;
-		ArrayList<BeanUsuario> listaUsuarios = null;
+	public ArrayList<Usuario> listarUsuarios() {
+		Usuario usuario = null;
+		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		Connection conn= null;
 		PreparedStatement stmt = null;
 		String sql = null;
@@ -55,7 +55,7 @@ public class GestionUsuario implements InterfaceUsuario {
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				usuario = new BeanUsuario();
+				usuario = new Usuario();
 				usuario.setUid(Integer.parseInt(rs.getString("uid")));
 				usuario.setName(rs.getString("name"));
 				usuario.setLastName(rs.getString("last_name"));
@@ -71,7 +71,7 @@ public class GestionUsuario implements InterfaceUsuario {
 	}
 
 	@Override
-	public boolean registrarUsuario(BeanUsuario usuario) {
+	public boolean registrarUsuario(Usuario usuario) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		String sql = null;

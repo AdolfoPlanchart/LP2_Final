@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.proyecto.dao.GestionUsuario;
-import net.proyecto.entidad.BeanUsuario;
+import net.proyecto.dao.MySqlUsuarioDAO;
+import net.proyecto.entidad.Usuario;
 
 /**
  * Servlet implementation class ServletRegistro
@@ -47,14 +47,14 @@ public class ServletRegistro extends HttpServlet {
 		String psw = request.getParameter("psw");
 		String celular = request.getParameter("codigopais") + request.getParameter("celular");
 		
-		BeanUsuario usuario = new BeanUsuario();
+		Usuario usuario = new Usuario();
 		usuario.setName(nombre);
 		usuario.setLastName(apellido);
 		usuario.setEmail(email);
 		usuario.setPsw(psw);
 		usuario.setPhoneNumber(celular);
 		
-		GestionUsuario gu = new GestionUsuario();
+		MySqlUsuarioDAO gu = new MySqlUsuarioDAO();
 		try {
 			seRegistro = gu.registrarUsuario(usuario);
 			String redirectTo = "login.jsp";

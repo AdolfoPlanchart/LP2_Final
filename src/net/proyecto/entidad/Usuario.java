@@ -2,7 +2,7 @@ package net.proyecto.entidad;
 
 import java.io.Serializable;
 
-public class BeanUsuario implements Serializable {
+public class Usuario implements Serializable {
 	/**
 	 * 
 	 */
@@ -15,7 +15,7 @@ public class BeanUsuario implements Serializable {
 	private String phoneNumber;
 	private String psw;
 	
-	public BeanUsuario() {
+	public Usuario() {
 	}
 
 	public int getUid() {
