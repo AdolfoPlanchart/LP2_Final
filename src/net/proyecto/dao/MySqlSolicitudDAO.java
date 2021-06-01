@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.proyecto.entidad.Solicitud;
-import net.proyecto.interfaz.SolicitudDao;
+import net.proyecto.interfaz.SolicitudDAO;
 import net.proyecto.utils.ConnMySQL;
 
-public class MySqlSolicitudDAO  implements SolicitudDao{
+public class MySqlSolicitudDAO  implements SolicitudDAO{
 
 	@Override
 	public int save(Solicitud bean) {

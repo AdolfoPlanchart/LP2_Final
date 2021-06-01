@@ -4,10 +4,9 @@ import java.util.List;
 
 import net.proyecto.entidad.Solicitud;
 
-public interface SolicitudDao {
+public interface SolicitudDAO {
 	public int save(Solicitud bean);
 	public int update(Solicitud bean);
 	public int delete(int cod);
 	public List<Solicitud> listAll();
-
 }
