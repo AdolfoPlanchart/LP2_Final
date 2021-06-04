@@ -13,4 +13,17 @@ public class TrabajadorService {
 	public List<Trabajador> listarTrabajadores() {
 		return trabajadorDAO.listarTrabajadores();
 	}
+	
+	public int registrarTrabajador(Trabajador bean) {
+		return trabajadorDAO.registrarTrabajador(bean);
+	}
+	
+	public int actualizar(Trabajador bean) {
+		// TODO Auto-generated method stub
+		return trabajadorDAO.actualizarTrabajador(bean);
+	}
+	
+	public int eliminarTrabajador(int cod_trabajador) {
+		return trabajadorDAO.eliminarTrabajador(cod_trabajador);
+	}
 }
