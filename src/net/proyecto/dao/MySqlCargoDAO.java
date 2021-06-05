@@ -48,4 +48,95 @@ public class MySqlCargoDAO implements CargoDAO {
 		return lista;
 	}
 
+	@Override
+	public int registrarCargo(Cargo bean) {
+		int salida=-1;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		try {
+			//1
+			cn=ConnMySQL.getConexion();
+			//2
+			String sql="insert into tb_cargos values(null,?)"; 
+			//3
+			pstm=cn.prepareStatement(sql);
+			//4 
+			pstm.setString(1, bean.getDesc_cargo());
+			//5
+			salida=pstm.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}		
+		return salida;
+	}
+
+	@Override
+	public int actualizarCargo(Cargo bean) {
+		int salida=-1;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		try {
+			//1
+			cn=ConnMySQL.getConexion();
+			//2
+			String sql="update tb_cargos set desc_cargo=? where cod_cargo=?"; 
+			//3
+			pstm=cn.prepareStatement(sql);
+			//4 
+			pstm.setString(1, bean.getDesc_cargo());
+			pstm.setInt(2, bean.getCod_cargo());
+			//5
+			salida=pstm.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}		
+		return salida;
+	}
+
+	@Override
+	public int eliminarCargo(int cod_cargo) {
+		int salida=-1;
+		Connection cn=null;
+		PreparedStatement pstm=null;
+		try {
+			//1
+			cn=ConnMySQL.getConexion();
+			//2
+			String sql="delete from tb_cargos where cod_cargo=?"; 
+			//3
+			pstm=cn.prepareStatement(sql);
+			//4 
+			pstm.setInt(1, cod_cargo);
+			//5
+			salida=pstm.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}		
+		return salida;
+	}
+
 }

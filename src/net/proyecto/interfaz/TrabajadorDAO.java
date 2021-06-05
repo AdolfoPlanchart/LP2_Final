@@ -15,7 +15,7 @@ public interface TrabajadorDAO {
 	public int registrarTrabajador(Trabajador bean);
 	
 	/* Actualizar Trabajador */
-	public int actualizarTrabajador(int cod_trabajador);
+	public int actualizarTrabajador(Trabajador bean);
 	
 	/* Eliminar Trabajador */
 	public int eliminarTrabajador(int cod_trabajador);

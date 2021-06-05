@@ -13,4 +13,13 @@ public class CargoService {
 	public List<Cargo> listarCargos() {
 		return cargoDAO.listarCargos();
 	}
+	public int registrarCargo(Cargo bean) {
+		return cargoDAO.registrarCargo(bean);
+	}
+	public int actualizarCargo(Cargo bean) {
+		return cargoDAO.actualizarCargo(bean);
+	}
+	public int eliminarCargo(int cod_cargo) {
+		return cargoDAO.eliminarCargo(cod_cargo);
+	}
 }
