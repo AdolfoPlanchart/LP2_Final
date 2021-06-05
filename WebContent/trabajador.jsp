@@ -181,7 +181,7 @@
 	<script>
 		//window.onload = cargarTrabajadores();
 		$(document).ready(function() {
-		    $('#tableTrabajadores').DataTable();
+		    $('#tableTrabajadores').DataTable({searching: false,info: false});
 		    llenarCargo();
 		} );
 		//asignar evento click a los botones con clase "btn-editar"
