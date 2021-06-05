@@ -10,12 +10,14 @@ public class TrabajadorService {
 	DAOFactory fabrica = DAOFactory.getDAOFactory(1);
 	TrabajadorDAO trabajadorDAO = fabrica.getTrabajadorDAO();
 	
-	public List<Trabajador> listarTrabajadores(int cod_cargo) {
+	public List<Trabajador> listarTrabajadores() {
 		return trabajadorDAO.listarTrabajadores();
 	}
 	
-<<<<<<< HEAD
-=======
+	public List<Trabajador> listarTrabajadores(int cod_cargo) {
+		return trabajadorDAO.listarTrabajadores(cod_cargo);
+	}
+	
 	public int registrarTrabajador(Trabajador bean) {
 		return trabajadorDAO.registrarTrabajador(bean);
 	}
@@ -24,8 +26,6 @@ public class TrabajadorService {
 		// TODO Auto-generated method stub
 		return trabajadorDAO.actualizarTrabajador(bean);
 	}
-	
->>>>>>> dev
 	public int eliminarTrabajador(int cod_trabajador) {
 		return trabajadorDAO.eliminarTrabajador(cod_trabajador);
 	}

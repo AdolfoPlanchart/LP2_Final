@@ -171,17 +171,8 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 	@Override
 	public int eliminarTrabajador(int cod_trabajador) {
 		int salida=-1;
-<<<<<<< HEAD
 		Connection cn = null;
 		PreparedStatement pstm = null;
-		try {
-			cn = ConnMySQL.getConexion();
-			String sql = "delete from tb_trabajador where cod_trabajador = ?;";
-			pstm = cn.prepareStatement(sql);
-			pstm.setInt(1,cod_trabajador);
-=======
-		Connection cn=null;
-		PreparedStatement pstm=null;
 		try {
 			//1
 			cn=ConnMySQL.getConexion();
@@ -192,7 +183,6 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 			//4 
 			pstm.setInt(1, cod_trabajador);
 			//5
->>>>>>> dev
 			salida=pstm.executeUpdate();
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -204,11 +194,7 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}
-<<<<<<< HEAD
-		}
-=======
-		}		
->>>>>>> dev
+		}	
 		return salida;
 	}
 

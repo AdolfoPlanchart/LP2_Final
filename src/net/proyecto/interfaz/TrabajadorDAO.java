@@ -19,4 +19,5 @@ public interface TrabajadorDAO {
 	
 	/* Eliminar Trabajador */
 	public int eliminarTrabajador(int cod_trabajador);
+
 }

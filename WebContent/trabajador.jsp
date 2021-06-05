@@ -50,11 +50,24 @@
   		</c:if>
   		
   		<h2 class="text-center">Listado de Trabajadores</h2>
-  		
-  		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTrabajador">
-		  Nuevo Trabajador
-		</button>
+  		<hr/>
+  		<!-- Form filtrar -->
+  		<form class="form-inline" action="FILTRARxCARGO" id="frmFiltrarxCargo">
+		  <div class="form-group sm-1">
+		    <input type="text" readonly class="form-control-plaintext" value="Selecionar cargo: ">
+		  </div>
+		  <div class="form-group mx-sm-4 mb-2">
+		    <select class="form-control comboCargo" id="filtrarPorCargo" name="filtroCargo">
+			    <option value=" ">[Seleccione Cargo]</option>
+			</select>
+		  </div>
+		  <button type="submit" class="btn btn-success mb-2">Consultar por Cargo</button>
+		  <!-- Button trigger modal -->
+		  <button type="button" class="btn btn-primary mx-sm-3 mb-2" data-toggle="modal" data-target="#modalTrabajador">
+				Nuevo Trabajador
+		  </button>
+		</form>
+  		<!-- Finish form filtrar -->
 		
 		<table id="tableTrabajadores" class="table table-striped table-bordered" style="width:100%">
         <thead>
@@ -87,7 +100,7 @@
             </c:forEach>
  		</tbody>
     </table>
-		
+
 		
 		<!-- INICIO - Modal PARA REGISTRAR Y ACTUALIZAR TRABAJADORES-->
 		<div class="modal fade" id="modalTrabajador" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -127,7 +140,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Cargo</label>
-				    <select class="form-control" id="idCargo" name="cargo">
+				    <select class="form-control comboCargo" name="cargo">
 				      <option value=" ">[Seleccione Cargo]</option>
 				    </select>
 				  </div>				  
@@ -231,7 +244,7 @@
 			$.getJSON("ServletCargoJSON",{},function(response){
 				//bucle para realizar recorrido sobre "response"
 				$.each(response,function(index,item){
-					$("#idCargo").append("<option value='"+item.cod_cargo+"'>"+item.desc_cargo+"</option>");
+					$(".comboCargo").append("<option value='"+item.cod_cargo+"'>"+item.desc_cargo+"</option>");
 					console.log(item);
 				})
 			})	
@@ -240,7 +253,18 @@
 	
 	
 	<script type="text/javascript">    
-    $(document).ready(function(){     
+    $(document).ready(function(){
+    	$('#frmFiltrarxCargo').bootstrapValidator({
+    		fields:{
+    			filtroCargo:{
+    		 		validators:{
+    		 			notEmpty:{
+    		 				message:' '
+    		 			}
+    		 		}
+    		 	}	 
+    		}
+    	});
         $('#formTrabajador').bootstrapValidator({      
         	 fields:{
         		 	nombre:{
