@@ -10,7 +10,11 @@ public class TrabajadorService {
 	DAOFactory fabrica = DAOFactory.getDAOFactory(1);
 	TrabajadorDAO trabajadorDAO = fabrica.getTrabajadorDAO();
 	
-	public List<Trabajador> listarTrabajadores() {
+	public List<Trabajador> listarTrabajadores(int cod_cargo) {
 		return trabajadorDAO.listarTrabajadores();
+	}
+	
+	public int eliminarTrabajador(int cod_trabajador) {
+		return trabajadorDAO.eliminarTrabajador(cod_trabajador);
 	}
 }

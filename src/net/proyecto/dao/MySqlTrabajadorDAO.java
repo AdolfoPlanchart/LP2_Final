@@ -110,8 +110,27 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 
 	@Override
 	public int eliminarTrabajador(int cod_trabajador) {
-		// TODO Auto-generated method stub
-		return 0;
+		int salida=-1;
+		Connection cn = null;
+		PreparedStatement pstm = null;
+		try {
+			cn = ConnMySQL.getConexion();
+			String sql = "delete from tb_trabajador where cod_trabajador = ?;";
+			pstm = cn.prepareStatement(sql);
+			pstm.setInt(1,cod_trabajador);
+			salida=pstm.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(pstm!=null) pstm.close();
+				if(cn!=null) cn.close();
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return salida;
 	}
 
 }
