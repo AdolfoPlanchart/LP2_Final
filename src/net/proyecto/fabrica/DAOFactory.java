@@ -1,5 +1,6 @@
 package net.proyecto.fabrica;
 
+import net.proyecto.interfaz.SolicitudDAO;
 import net.proyecto.interfaz.TrabajadorDAO;
 
 public abstract class DAOFactory {
@@ -10,6 +11,7 @@ public abstract class DAOFactory {
     public static final int XML = 5;
     
     public abstract TrabajadorDAO getTrabajadorDAO();
+    public abstract SolicitudDAO getSolicitudDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){

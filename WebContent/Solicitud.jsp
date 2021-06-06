@@ -58,9 +58,9 @@
         <thead>
             <tr>
                 <th>CÓDIGO</th>
-                <th>NOMBRE</th>
-                <th>PATERNO</th>
-                <th>MATERNO</th>
+                <th>FECHA</th>
+                <th>DESCRIPCION</th>
+                <th>TRABAJADOR</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -177,25 +177,19 @@
 		//asignar evento click a los botones con clase "btn-editar"
 		$(document).on("click",".btn-editar",function(){
 			//variables
-			var cod,nom,pat,mat,sexo,hijos,sue,codCondi;
+			var cod,nom,pat,mat;
 			//obtener valores de la fila actual según donde se haga clic al botón editar
 			cod=$(this).parents("tr").find("td")[0].innerHTML;
 			nom=$(this).parents("tr").find("td")[1].innerHTML;
 			pat=$(this).parents("tr").find("td")[2].innerHTML;
 			mat=$(this).parents("tr").find("td")[3].innerHTML;
-			sexo=$(this).parents("tr").find("td")[4].innerHTML;
-			hijos=$(this).parents("tr").find("td")[5].innerHTML;
-			sue=$(this).parents("tr").find("td")[6].innerHTML;
-			codCondi=$(this).parents("tr").find("td")[7].innerHTML;
+			
 			//mostrar los valores de las variables en los controles(cajas y select)
 			$("#idCodigo").val(cod);
 			$("#idNombres").val(nom);
 			$("#idPaterno").val(pat);
 			$("#idMaterno").val(mat);
-			$("#idSexo").val(sexo);
-			$("#idHijos").val(hijos);
-			$("#idSueldo").val(sue);
-			$("#idCondicion").val(codCondi);
+		
 		})
 		
 		//asignar evento click a los botones con clase "btn-eliminar"

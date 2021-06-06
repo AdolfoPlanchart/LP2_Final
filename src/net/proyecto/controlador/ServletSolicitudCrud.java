@@ -55,7 +55,7 @@ public class ServletSolicitudCrud extends HttpServlet {
 		//PASO 1: crear un atributo
 		request.setAttribute("docentes", data);
 		//PASO 2: direccionar a la página docente.jsp
-		request.getRequestDispatcher("/docente.jsp").forward(request, response);
+		request.getRequestDispatcher("/Solicitud.jsp").forward(request, response);
 	
 	}
 
