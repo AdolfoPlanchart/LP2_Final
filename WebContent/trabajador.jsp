@@ -51,24 +51,31 @@
   		
   		<h2 class="text-center">Listado de Trabajadores</h2>
   		<hr/>
-  		<!-- Form filtrar -->
-  		<form class="form-inline" action="FILTRARxCARGO" id="frmFiltrarxCargo">
-		  <div class="form-group sm-1">
-		    <input type="text" readonly class="form-control-plaintext" value="Selecionar cargo: ">
-		  </div>
-		  <div class="form-group mx-sm-4 mb-2">
-		    <select class="form-control comboCargo" id="filtrarPorCargo" name="filtroCargo">
-			    <option value=" ">[Seleccione Cargo]</option>
-			</select>
-		  </div>
-		  <button type="submit" class="btn btn-success mb-2">Consultar por Cargo</button>
-		  <!-- Button trigger modal -->
-		  <button type="button" class="btn btn-primary mx-sm-3 mb-2" data-toggle="modal" data-target="#modalTrabajador">
-				Nuevo Trabajador
-		  </button>
-		</form>
-  		<!-- Finish form filtrar -->
-		
+  		<div class="form-inline">
+	  		<!-- Form filtrar -->
+	  		<form class="form-inline" action="ServletTrabajador?ACCION=LISTARxCARGO" method="POST" id="frmFiltrarxCargo">
+			  <div class="form-group sm-1">
+			    <input type="text" readonly class="form-control-plaintext" value="Seleccionar cargo: ">
+			  </div>
+			  <div class="form-group mx-sm-4 mb-2">
+			    <select class="form-control comboCargo" id="filtrarPorCargo" name="filtroCargo">
+				    <option value=" ">[Seleccione Cargo]</option>
+				</select>
+			  </div>
+			  <button type="submit" class="btn btn-success mb-2 mx-sm-3">Consultar por Cargo</button>
+			  <!-- Button trigger modal -->
+			  <button type="button" class="btn btn-primary mx-sm-3 mb-2" data-toggle="modal" data-target="#modalTrabajador">
+					Nuevo Trabajador
+			  </button>
+			</form>
+			<c:if test="${requestScope.filtrando}">
+	  			<form class="form-inline mx-sm-3 mb-2" action="ServletTrabajador?ACCION=LISTAR" method="POST">
+	  		  		<button type="submit" class="btn btn-warning">Listar todos los trabajadores</button>
+			  	</form>
+			</c:if>
+	  		<!-- Finish form filtrar -->  
+	  	</div>
+	  	
 		<table id="tableTrabajadores" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -194,7 +201,21 @@
 	<script>
 		//window.onload = cargarTrabajadores();
 		$(document).ready(function() {
-		    $('#tableTrabajadores').DataTable({searching: false,info: false});
+		    $('#tableTrabajadores').DataTable({
+		    	searching: false,
+		    	info: false,
+		    	dom: "<bottom<'row'<'col-sm-6 col-md-5'l><'col-sm-6 col-md-7'p>>>",
+		    	language:{
+		    		lengthMenu: 'Mostrar _MENU_ registros por pagina.',
+		    		zeroRecords: 'No hay registros',
+		    		paginate:{
+		    			first: 'Primero',
+		    			last: 'Ultimo',
+		    			next: 'Siguiente',
+		    			previous: 'Anterior'
+		    		}
+		    	}
+		    });
 		    llenarCargo();
 		} );
 		//asignar evento click a los botones con clase "btn-editar"
@@ -219,7 +240,6 @@
 			$("#idDNI").val(dni);
 			$("#idCargo").val(cargo);
 		})
-		
 		//asignar evento click a los botones con clase "btn-eliminar"
 		$(document).on("click",".btn-eliminar",function(){
 			//variables
@@ -239,7 +259,6 @@
 			 //asignar "0" a la caja con ID "idCodigo" 
 			 $("#idCodigo").val(0);
 		})
-		
 		function llenarCargo(){
 			$.getJSON("ServletCargoJSON",{},function(response){
 				//bucle para realizar recorrido sobre "response"

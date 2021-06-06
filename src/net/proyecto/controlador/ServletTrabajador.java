@@ -27,12 +27,24 @@ public class ServletTrabajador extends HttpServlet {
 		String accion = request.getParameter("ACCION");
 		if(accion.equals("LISTAR"))
 			listar(request,response);
+		else if(accion.equals("LISTARxCARGO"))
+			listarPorCargo(request,response);
 		else if(accion.equals("GUARDAR"))
 			guardar(request,response);
 		else if(accion.equals("ELIMINAR"))
 			eliminar(request,response);
 	}
 	
+	private void listarPorCargo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cargo;
+		cargo = request.getParameter("filtroCargo");		
+		List<Trabajador> data = servicio.listarTrabajadores(Integer.parseInt(cargo));
+		request.setAttribute("filtrando", true);
+		request.setAttribute("filtro", true);
+		request.setAttribute("trabajadores", data);
+		request.getRequestDispatcher("/trabajador.jsp").forward(request, response);
+	}
+
 	private void guardar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod,nom,pat,mat,dir,dni,codCargo;
 		cod=request.getParameter("codigo");

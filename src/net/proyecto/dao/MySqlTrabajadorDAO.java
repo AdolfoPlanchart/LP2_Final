@@ -64,8 +64,8 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 		try {
 			cn = ConnMySQL.getConexion();
 			String sql = "select cod_trabajador,nom_trabajador,ape_pat_trabajador,ape_mat_trabajador,direc_trabajador,dni_trabajador,desc_cargo "
-					+ "from tb_trabajador t inner join  tb_cargos "
-					+ "on t.cod_cargo = c.cod_cargo where cod_cargo = ?;";
+					+ "from tb_trabajador t inner join  tb_cargos c "
+					+ "on t.cod_cargo = c.cod_cargo where c.cod_cargo = ?;";
 			pstm = cn.prepareStatement(sql);
 			pstm.setInt(1,cod_cargo);
 			rs = pstm.executeQuery();
