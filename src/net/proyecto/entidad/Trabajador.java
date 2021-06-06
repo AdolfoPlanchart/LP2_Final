@@ -2,6 +2,7 @@ package net.proyecto.entidad;
 
 public class Trabajador {
 	private int cod_trabajador;
+	private int cod_cargo;
 	private String nom_trabajador;
 	private String ape_pat_trabajador;
 	private String ape_mat_trabajador;
@@ -9,6 +10,12 @@ public class Trabajador {
 	private String dni_trabajador;
 	private String cargo;
 	
+	public int getCod_cargo() {
+		return cod_cargo;
+	}
+	public void setCod_cargo(int cod_cargo) {
+		this.cod_cargo = cod_cargo;
+	}
 	public int getCod_trabajador() {
 		return cod_trabajador;
 	}
