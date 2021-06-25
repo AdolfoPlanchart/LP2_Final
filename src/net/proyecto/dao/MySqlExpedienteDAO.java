@@ -136,7 +136,7 @@ public class MySqlExpedienteDAO implements ExpedienteDAO {
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="select*from tb_expediente_gastos"; 
+			String sql="select * from tb_expediente_gastos"; 
 			pstm=cn.prepareStatement(sql);
 			//4 (NO HAYYYYYY)
 
@@ -147,6 +147,8 @@ public class MySqlExpedienteDAO implements ExpedienteDAO {
 				//7 crear objeto de la clase Docente
 				ExpedienteGastos bean=new ExpedienteGastos();
 				//8
+				System.out.println(rs.getInt(2));
+				
 				bean.setCodigo(rs.getInt(1));
 				bean.setCodigoSolicitud(rs.getInt(2));
 				bean.setFecha(rs.getString(3));

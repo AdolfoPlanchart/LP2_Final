@@ -3,6 +3,7 @@ package net.proyecto.entidad;
 public class ExpedienteGastos {
 	private int codigo,codigoSolicitud;
 	private String fecha,descripcion,estado;
+	
 	public int getCodigo() {
 		return codigo;
 	}

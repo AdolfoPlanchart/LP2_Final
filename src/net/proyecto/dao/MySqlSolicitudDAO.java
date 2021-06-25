@@ -176,7 +176,7 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="select*from tb_solicitud"; 
+			String sql="select * from tb_solicitud"; 
 			pstm=cn.prepareStatement(sql);
 			//4 (NO HAYYYYYY)
 
@@ -184,16 +184,13 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			rs=pstm.executeQuery();
 			//6 while
 			while(rs.next()) {
-				//7 crear objeto de la clase Docente
 				Solicitud bean=new Solicitud();
-				//8
+				
 				bean.setCodigo(rs.getInt(1));
 				bean.setFecha(rs.getString(2));
 				bean.setDescripcion(rs.getString(3));
 				bean.setCodigoTrabajador(rs.getInt(4));
 				bean.setEstado(rs.getString(5));
-				
-				//9
 				lista.add(bean);
 			}
 		} catch (SQLException | ClassNotFoundException e) {

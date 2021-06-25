@@ -70,7 +70,7 @@
         	<c:forEach items="${requestScope.docentes}" var="row">
 	            <tr>
 	                <td>${row.codigo}</td>
-	                <td>${row.codigosolicitud}</td>
+	                <td>${row.codigoSolicitud}</td>
 	                <td>${row.fecha}</td>   
 	                <td>${row.descripcion}</td>
 	                <td>${row.estado}</td>
@@ -139,7 +139,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form id="formDocente"  action="ServleteExpediente?ACCION=Eliminar" method="post">
+		        <form id="formDocente"  action="ServletExpediente?ACCION=Eliminar" method="post">
 		         	    <input type="hidden" class="form-control" id="idCodigoEliminar" name="codigo">
 				  SEGURO DE ELIMINAR ?
 				  <div class="modal-footer">
@@ -194,8 +194,6 @@
 			$("#idNombres").val(nom);
 			$("#idPaterno").val(pat);
 			$("#idMaterno").val(mat);
-			
-		
 		})
 		
 		//asignar evento click a los botones con clase "btn-eliminar"
@@ -231,7 +229,7 @@
 			$.getJSON("ServletSolicitudJson",{},function(response){
 				//bucle para realizar recorrido sobre "response"
 				$.each(response,function(index,item){
-					$("#idtrabajador").append("<option value='"+item.codigoSolicitud+"'>"+item.estado+"</option>");
+					$("#idtrabajador").append("<option value='"+item.codigo+"'>"+item.codigo+"</option>");
 				})
 				
 			})

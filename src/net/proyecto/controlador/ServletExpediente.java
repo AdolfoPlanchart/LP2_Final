@@ -78,6 +78,8 @@ public class ServletExpediente extends HttpServlet {
 		String cod,fech,des,codtra,estado;
 		cod=request.getParameter("codigo");
 		codtra=request.getParameter("soli");
+		
+		System.out.println(codtra);
 		fech=request.getParameter("fecha");
 		des=request.getParameter("des");
 		estado=request.getParameter("estado");
