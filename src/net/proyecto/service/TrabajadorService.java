@@ -2,7 +2,9 @@ package net.proyecto.service;
 
 import java.util.List;
 
+import net.proyecto.entidad.Menu;
 import net.proyecto.entidad.Trabajador;
+import net.proyecto.entidad.Usuario;
 import net.proyecto.fabrica.DAOFactory;
 import net.proyecto.interfaz.TrabajadorDAO;
 
@@ -28,5 +30,13 @@ public class TrabajadorService {
 	}
 	public int eliminarTrabajador(int cod_trabajador) {
 		return trabajadorDAO.eliminarTrabajador(cod_trabajador);
+	}
+	
+	public Trabajador iniciarSesion(String login,String psw) {
+		return trabajadorDAO.inicarSesion(login, psw);
+	}
+	
+	public List<Menu> getMenus(int cod_cargo) {
+		return trabajadorDAO.getMenus(cod_cargo);
 	}
 }

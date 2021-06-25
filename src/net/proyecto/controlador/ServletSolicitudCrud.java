@@ -84,7 +84,7 @@ public class ServletSolicitudCrud extends HttpServlet {
 		cod=request.getParameter("codigo");
 		fech=request.getParameter("fecha");
 		des=request.getParameter("des");
-		codtra=request.getParameter("traba");
+		codtra=request.getParameter("codTrabajador");
 		estado=request.getParameter("estado");
 		//PASO 2: crear objeto de la clase Docente
 		Solicitud bean=new Solicitud();
@@ -95,21 +95,20 @@ public class ServletSolicitudCrud extends HttpServlet {
 		bean.setCodigoTrabajador(Integer.parseInt(codtra));
 		bean.setEstado(estado);
 		//PASO 4: validar atributo código
-		if(bean.getCodigo()==0) {//INSERTTTTTTTTTTTTTT
+		if(bean.getCodigo()==0) {
 			//invocar al método save
 			int salida;
 			salida=sSolicitud.agregar(bean);
 			//validar salida
-			if(salida>0) {// SE INSERTO CORRECTAMENTE
+			if(salida>0) {
 				//crear un atributo MENSAJE
-				request.setAttribute("Solicitud","Docente registrado");
+				request.setAttribute("MENSAJE","Solicitud registrada");
 			}
-			else {// ERROR AL INSERTAR
-				request.setAttribute("Solcitud","Error en el registro de docente");
+			else {
+				request.setAttribute("MENSAJE","Error en el registro de solicitud");
 			}
 		}
-		else {//UPDATEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-			//invocar al método update
+		else {
 			int salida;
 			salida=sSolicitud.actualizar(bean);
 			//validar salida

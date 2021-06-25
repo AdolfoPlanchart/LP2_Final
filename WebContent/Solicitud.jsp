@@ -88,7 +88,7 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="staticBackdropLabel">DOCENTE</h5>
+		        <h5 class="modal-title" id="staticBackdropLabel">SOLICITUD</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -96,7 +96,7 @@
 		      <div class="modal-body">
 		        <form id="formDocente"  action="ServletSolicitudCrud?ACCION=REGISTRAR" method="post">
 		         <div class="form-group">
-				    <label for="exampleInputEmail1">Código</label>
+				    <label for="exampleInputEmail1">Código de Solicitud</label>
 				    <input type="text" class="form-control" id="idCodigo" name="codigo" value="0" readonly>
 				  </div>
 				  <div class="form-group">

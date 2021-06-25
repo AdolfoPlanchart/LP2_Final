@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import net.proyecto.entidad.Menu;
 import net.proyecto.entidad.Trabajador;
 import net.proyecto.service.TrabajadorService;
 
@@ -33,8 +35,12 @@ public class ServletTrabajador extends HttpServlet {
 			guardar(request,response);
 		else if(accion.equals("ELIMINAR"))
 			eliminar(request,response);
+		else if(accion.equals("LOGIN"))
+			iniciarSesion(request,response);
+		else if(accion.equals("LOGOUT"))
+			cerrarSesion(request,response);
 	}
-	
+
 	private void listarPorCargo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cargo;
 		cargo = request.getParameter("filtroCargo");		
@@ -44,7 +50,6 @@ public class ServletTrabajador extends HttpServlet {
 		request.setAttribute("trabajadores", data);
 		request.getRequestDispatcher("/trabajador.jsp").forward(request, response);
 	}
-
 	private void guardar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cod,nom,pat,mat,dir,dni,codCargo;
 		cod=request.getParameter("codigo");
@@ -110,5 +115,30 @@ public class ServletTrabajador extends HttpServlet {
 		List<Trabajador> data = servicio.listarTrabajadores();
 		request.setAttribute("trabajadores", data);
 		request.getRequestDispatcher("/trabajador.jsp").forward(request, response);
+	}
+
+	private void iniciarSesion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String correo = request.getParameter("correo");
+		String psw = request.getParameter("psw");
+		
+		Trabajador bean = servicio.iniciarSesion(correo, psw);
+		
+		if(bean == null) {
+			request.setAttribute("MENSAJE", "Usuario y/o clave incorrecto.");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		} else {
+			HttpSession session = request.getSession();
+			
+			List<Menu> lista = servicio.getMenus(bean.getCod_cargo());
+			session.setAttribute("MENUS", lista);
+			session.setAttribute("DATOS",bean);
+			request.getRequestDispatcher("/menu.jsp").forward(request, response);
+		}
+	}
+	private void cerrarSesion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		request.setAttribute("MENSAJE", "Sesion cerrada.");
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 }
