@@ -26,7 +26,6 @@ public class ExpedienteService {
 	public int eliminar(int cod) {
 		return ExpedienteDAO.delete(cod);
 	}
-	
 	public List<ExpedienteGastos> listarTodos(){
 		return ExpedienteDAO.listAll();
 	}

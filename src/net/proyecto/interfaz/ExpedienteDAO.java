@@ -11,5 +11,4 @@ public interface ExpedienteDAO {
 	public int delete(int cod);
 	public List<SolicitudxTrabajador> listAll(int numPisos);
 	public List<ExpedienteGastos> listAll();
-
 }
