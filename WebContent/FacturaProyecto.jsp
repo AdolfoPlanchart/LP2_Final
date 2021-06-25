@@ -141,6 +141,7 @@
 												            <tr>
 												                <th width="5%">Codigo</th>
 												                <th width="85%">Descripcion</th>
+												            <th></th>
 												            </tr>
 												        </thead>
 												        <tbody>
@@ -174,17 +175,19 @@
 
 <script>
 $(document).ready(function(){
+	cargarExpedientes();
 	llenarTrabajador();
 });
 
-/*function cargarExpedientes(){
+function cargarExpedientes(){
 	$.getJSON("ServletExpedienteJSON",{},function(response){
 		$.each(response,function(index,item){
 			$("#tableExpedientes").append("<tr><td>"+item.cod_expediente+"</td><td>"+item.desc_expediente+"</td><td>"+
 					"<button type="button" class='btn btn-success'>Agregar</button></td></tr>");
 		})
+		$('#tableExpedientes').Datatable();
 	})
-}*/
+}
 function llenarTrabajador(){
 	
 	$.getJSON("ServletTrabajadorJSON",{},function(response){
@@ -201,8 +204,8 @@ function llenarTrabajador(){
 
 
 
-
-
+/*
+*/
 
 
 
