@@ -155,9 +155,11 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 			pstm.setString(4, bean.getDir_trabajador());
 			pstm.setString(5, bean.getDni_trabajador());
 			pstm.setInt(6, bean.getCod_cargo());
-			pstm.setInt(7, bean.getCod_trabajador());
-			pstm.setString(8, bean.getCorreo());
-			pstm.setString(9, bean.getClave());
+
+			pstm.setString(7, bean.getCorreo());
+			pstm.setString(8, bean.getClave());
+			
+			pstm.setInt(9, bean.getCod_trabajador());
 			//5
 			salida=pstm.executeUpdate();
 		} catch (SQLException | ClassNotFoundException e) {

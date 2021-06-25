@@ -150,7 +150,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Cargo</label>
-				    <select class="form-control comboCargo" name="cargo">
+				    <select class="form-control comboCargo" id="idCargo" name="cargo">
 				      <option value=" ">[Seleccione Cargo]</option>
 				    </select>
 				  </div>
