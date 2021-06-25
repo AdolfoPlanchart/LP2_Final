@@ -2,13 +2,22 @@ package net.proyecto.entidad;
 
 public class Trabajador {
 	private int cod_trabajador;
+	private int cod_cargo;
 	private String nom_trabajador;
 	private String ape_pat_trabajador;
 	private String ape_mat_trabajador;
 	private String dir_trabajador;
 	private String dni_trabajador;
 	private String cargo;
+	private String correo;
+	private String clave;
 	
+	public int getCod_cargo() {
+		return cod_cargo;
+	}
+	public void setCod_cargo(int cod_cargo) {
+		this.cod_cargo = cod_cargo;
+	}
 	public int getCod_trabajador() {
 		return cod_trabajador;
 	}
@@ -50,5 +59,17 @@ public class Trabajador {
 	}
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	public String getClave() {
+		return clave;
+	}
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 }
