@@ -43,6 +43,7 @@
 		                <th>CÓDIGO</th>
 		                <th>FECHA DE LA SOLICITUD</th>
 		                <th>DESCRIPCION DE LA SOLICITUD</th>
+		                <th>ESRADO SOLICITUD</th>
 		                <th>TRABAJADOR REGISTRADO</th>
 		                <th></th>
 		            </tr>
@@ -115,7 +116,7 @@
 			$.getJSON("ServletSolicitud",{numeroPisos:pisos},function(response){
 				$.each(response,function(index,item){
 					$("#tableSucursal").append("<tr><td>"+item.codigo+"</td><td>"+item.fecha+"</td><td>"+
-							item.descripcion+"</td><td>"+item.trabajador+
+							item.descripcion+"</td><td>"+item.estado+"</td><td>"+item.trabajador+
 												"</td><td><button type='button' class='btn btn-success btn-datos' data-target='#modalSucursal' data-toggle='modal'>Ver Datos</button></td></tr>");
 				})
 			})

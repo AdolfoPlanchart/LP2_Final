@@ -11,4 +11,5 @@ public interface SolicitudDAO {
 	public int delete(int cod);
 	public List<SolicitudxTrabajador> listAll(int numPisos);
 	public List<Solicitud> listAll();
+	
 }
