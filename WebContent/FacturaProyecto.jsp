@@ -81,13 +81,13 @@
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
 								<div class="modal-body">
-									<form action="ServletRequerimiento?accion=GRABAR" method="POST">	
+									<form action="ServletGenerarProyecto?accion=GENERAR" method="POST">	
 										<div class="container">
 											<div class="row">																											
 												<div class="col-md-4">
 													<div class="form-group">
 														<label for="exampleInputEmail1"><b>Codigo de Proyecto</b></label>
-														<input type="text" class="form-control" name="factura" placeholder="" readonly value="">
+														<input type="text" class="form-control" name="CodigoPro" placeholder="" readonly value="#00234">
 													</div>
 													<div class="form-group">
 														<label><b>Trabajador</b></label>					
@@ -140,7 +140,7 @@
 												        <thead>
 												            <tr>
 												                <th width="5%">Codigo</th>
-												                <th width="85%">Descripcion</th>
+												                <th width="80%">Descripcion</th>
 												            <th></th>
 												            </tr>
 												        </thead>
@@ -168,28 +168,72 @@
 <!-- JS de Bootstrapvalidator -->
 <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 <!-- JS de la tabla -->
-<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <!-- JS ICONOS -->
 <script src="https://kit.fontawesome.com/08aaa156fb.js" crossorigin="anonymous"></script>
 
 <script>
-$(document).ready(function(){
-	cargarExpedientes();
+$(document).ready(function() {
 	llenarTrabajador();
+	cargarExpedientes();
 });
 
 function cargarExpedientes(){
 	$.getJSON("ServletExpedienteJSON",{},function(response){
 		$.each(response,function(index,item){
-			$("#tableExpedientes").append("<tr><td>"+item.cod_expediente+"</td><td>"+item.desc_expediente+"</td><td>"+
-					"<button type="button" class='btn btn-success'>Agregar</button></td></tr>");
+			console.log(item.codigo);
+			$("#tableExpedientes").append("<tr><td>"+item.codigo+"</td><td>"+item.descripcion+"</td><td>"+
+					"<button type='button' class='btn btn-success btn-agregar'>Agregar</button>");
+
 		})
-		$('#tableExpedientes').Datatable();
+		$('#tableExpedientes').DataTable();
 	})
 }
-function llenarTrabajador(){
+//asignar evento click a los botones con clase btn-AGREGAR
+$(document).on("click",".btn-agregar",function(){
+	//variables
+	var cod,des;
+	cod=$(this).parents("tr").find("td")[0].innerHTML;
+	des=$(this).parents("tr").find("td")[1].innerHTML;
+	$("#tableDetalle tbody").empty();
+	$.getJSON("ServletGenerarProyecto",{accion:"AGREGAR",codigo:cod,descripcion:des},function(response){
+		$.each(response,function(index,item){
+			console.log(response);
+			$("#tableDetalle").append("<tr><td>"+item.cod_resolu+"</td><td>"+item.desc_expediente+"</td><td>"+
+					"<button type='button' class='btn btn-danger btn-eliminar'>Eliminar</button>");
+		})
+	})
 	
+})
+//asignar evento click a los botones con clase btn-AGREGAR
+$(document).on("click",".btn-eliminar",function(){
+	//variables
+	var cod;
+	cod=$(this).parents("tr").find("td")[0].innerHTML;
+	$("#tableDetalle tbody").empty();
+	$.getJSON("ServletGenerarProyecto",{accion:"ELIMINAR",cod_resolu:cod},function(response){
+		$.each(response,function(index,item){
+			console.log(response);
+			$("#tableDetalle").append("<tr><td>"+item.cod_resolu+"</td><td>"+item.cod_expedient+"</td><td>"+
+					"<button type='button' class='btn btn-danger btn-eliminar'>Eliminar</button>");
+		})
+	})
+	
+})
+
+
+
+
+
+
+
+
+
+
+
+
+function llenarTrabajador(){
 	$.getJSON("ServletTrabajadorJSON",{},function(response){
 		$.each(response,function(index,item){
 			$("#idTrabajador").append("<option value='"+item.cod_trabajador+"'>"+item.nom_trabajador+" "+item.ape_pat_trabajador+"</option>");

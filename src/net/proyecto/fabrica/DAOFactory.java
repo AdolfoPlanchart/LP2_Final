@@ -2,6 +2,7 @@ package net.proyecto.fabrica;
 
 import net.proyecto.interfaz.CargoDAO;
 import net.proyecto.interfaz.ExpedienteDAO;
+import net.proyecto.interfaz.GenerarProyectoDAO;
 import net.proyecto.interfaz.SolicitudDAO;
 import net.proyecto.interfaz.TrabajadorDAO;
 
@@ -16,6 +17,7 @@ public abstract class DAOFactory {
     public abstract CargoDAO getCargoDAO();
     public abstract SolicitudDAO getSolicitudDAO();
     public abstract ExpedienteDAO getExpedienteDAO();
+    public abstract GenerarProyectoDAO  getGenerarProyectoDAO();
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){
        	case MYSQL:
