@@ -7,15 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.proyecto.entidad.ExpedienteGastos;
 import net.proyecto.entidad.Solicitud;
 import net.proyecto.entidad.SolicitudxTrabajador;
-import net.proyecto.interfaz.SolicitudDAO;
+import net.proyecto.interfaz.ExpedienteDAO;
 import net.proyecto.utils.ConnMySQL;
 
-public class MySqlSolicitudDAO  implements SolicitudDAO{
+public class MySqlExpedienteDAO implements ExpedienteDAO {
 
 	@Override
-	public int save(Solicitud bean) {
+	public int save(ExpedienteGastos bean) {
 		// TODO Auto-generated method stub
 		int salida=-1;
 		Connection cn=null;
@@ -24,13 +25,13 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="insert into tb_solicitud values(null,?,?,?,?)"; 
+			String sql="insert into tb_expediente_gastos values(null,?,?,?,?)"; 
 			//3
 			pstm=cn.prepareStatement(sql);
 			//4 
-			pstm.setString(1, bean.getFecha());
-			pstm.setString(2, bean.getDescripcion());
-			pstm.setInt(3, bean.getCodigoTrabajador());
+			pstm.setInt(1, bean.getCodigoSolicitud());
+			pstm.setString(2, bean.getFecha());
+			pstm.setString(3, bean.getDescripcion());
 			pstm.setString(4, bean.getEstado());
 			
 		
@@ -48,10 +49,11 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			}
 		}		
 		return salida;
+		
 	}
 
 	@Override
-	public int update(Solicitud bean) {
+	public int update(ExpedienteGastos bean) {
 		// TODO Auto-generated method stub
 		int salida=-1;
 		Connection cn=null;
@@ -60,14 +62,15 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="update tb_solicitud set ? where cod_solicitud=?"; 
+			String sql="update tb_expediente_gastos set cod_solicitud=?,fech_expediente=?,desc_expediente=?,estado=? where cod_expediente=?";
 			//3
 			pstm=cn.prepareStatement(sql);
 			//4 
-			pstm.setString(1, bean.getFecha());
-			pstm.setString(2, bean.getDescripcion());
-			pstm.setInt(3, bean.getCodigoTrabajador());
-			pstm.setInt(4, bean.getCodigo());
+			pstm.setInt(1, bean.getCodigoSolicitud());
+			pstm.setString(2, bean.getFecha());
+			pstm.setString(3, bean.getDescripcion());
+			pstm.setString(4, bean.getEstado());
+			
 			
 			//5
 			salida=pstm.executeUpdate();
@@ -95,7 +98,7 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="delete from tb_solicitud where cod_solicitud=?"; 
+			String sql="delete from tb_expediente_gastos where cod_expediente=?"; 
 			//3
 			pstm=cn.prepareStatement(sql);
 			//4 
@@ -119,56 +122,13 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 	@Override
 	public List<SolicitudxTrabajador> listAll(int numPisos) {
 		// TODO Auto-generated method stub
-		List<SolicitudxTrabajador> lista=new ArrayList<SolicitudxTrabajador>();
-		Connection cn=null;
-		PreparedStatement pstm=null;
-		ResultSet rs=null;
-		try {
-			//1
-			cn=ConnMySQL.getConexion();
-			//2
-			String sql="select cod_solicitud,fech_solicitud,desc_solicitud as'Descripcion',estado,nom_trabajador as'Trabajador' "
-					   + "from tb_solicitud c inner join tb_trabajador t "
-					   + "on c.cod_trabajador=t.cod_trabajador where cod_solicitud>=? "; 
-			pstm=cn.prepareStatement(sql);
-			//4 (NO HAYYYYYY)
-			pstm.setInt(1, numPisos);
-			//5
-			rs=pstm.executeQuery();
-			//6 while
-			while(rs.next()) {
-				//7 crear objeto de la clase Docente
-				SolicitudxTrabajador bean=new SolicitudxTrabajador();
-				//8
-				bean.setCodigo(rs.getInt(1));
-				bean.setFecha(rs.getString(2));
-				bean.setDescripcion(rs.getString(3));
-				bean.setEstado(rs.getString(4));
-				bean.setTrabajador(rs.getString(5));
-				
-				//9
-				lista.add(bean);
-			}
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				if(rs!=null) rs.close();
-				if(pstm!=null) pstm.close();
-				if(cn!=null) cn.close();
-			} catch (SQLException e2) {
-				e2.printStackTrace();
-			}
-		}
-		return lista;
+		return null;
 	}
 
 	@Override
-	public List<Solicitud> listAll() {
+	public List<ExpedienteGastos> listAll() {
 		// TODO Auto-generated method stub
-		
-		List<Solicitud> lista=new ArrayList<Solicitud>();
+		List<ExpedienteGastos> lista=new ArrayList<ExpedienteGastos>();
 		Connection cn=null;
 		PreparedStatement pstm=null;
 		ResultSet rs=null;
@@ -176,7 +136,7 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="select*from tb_solicitud"; 
+			String sql="select*from tb_expediente_gastos"; 
 			pstm=cn.prepareStatement(sql);
 			//4 (NO HAYYYYYY)
 
@@ -185,12 +145,12 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//6 while
 			while(rs.next()) {
 				//7 crear objeto de la clase Docente
-				Solicitud bean=new Solicitud();
+				ExpedienteGastos bean=new ExpedienteGastos();
 				//8
 				bean.setCodigo(rs.getInt(1));
-				bean.setFecha(rs.getString(2));
-				bean.setDescripcion(rs.getString(3));
-				bean.setCodigoTrabajador(rs.getInt(4));
+				bean.setCodigoSolicitud(rs.getInt(2));
+				bean.setFecha(rs.getString(3));
+				bean.setDescripcion(rs.getString(4));
 				bean.setEstado(rs.getString(5));
 				
 				//9
@@ -210,7 +170,6 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 		}
 		return lista;
 	}
+	
 
-	}
-
-
+}

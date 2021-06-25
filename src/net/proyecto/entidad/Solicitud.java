@@ -2,7 +2,23 @@ package net.proyecto.entidad;
 
 public class Solicitud {
 	private int codigo,codigoTrabajador;
-	private String fecha,descripcion;
+	private String fecha,descripcion,estado;
+	
+	private String nombreTrabajador;
+	
+	
+	public String getNombreTrabajador() {
+		return nombreTrabajador;
+	}
+	public void setNombreTrabajador(String nombreTrabajador) {
+		this.nombreTrabajador = nombreTrabajador;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 	public int getCodigo() {
 		return codigo;
 	}

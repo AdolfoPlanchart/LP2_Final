@@ -1,20 +1,19 @@
 package net.proyecto.entidad;
 
-public class SolicitudxTrabajador {
-	private int codigo;
-	private String fecha,descripcion,estado,trabajador;
-	
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+public class ExpedienteGastos {
+	private int codigo,codigoSolicitud;
+	private String fecha,descripcion,estado;
 	public int getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+	public int getCodigoSolicitud() {
+		return codigoSolicitud;
+	}
+	public void setCodigoSolicitud(int codigoSolicitud) {
+		this.codigoSolicitud = codigoSolicitud;
 	}
 	public String getFecha() {
 		return fecha;
@@ -28,11 +27,13 @@ public class SolicitudxTrabajador {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getTrabajador() {
-		return trabajador;
+	public String getEstado() {
+		return estado;
 	}
-	public void setTrabajador(String trabajador) {
-		this.trabajador = trabajador;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
+	
+	
 
 }
