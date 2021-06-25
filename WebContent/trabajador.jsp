@@ -87,6 +87,7 @@
                 <th>DIRECCION</th>
                 <th>DNI</th>
                 <th>CARGO</th>
+                <th>CORREO</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -102,6 +103,7 @@
 	                <td>${row.dir_trabajador}</td>
 	                <td>${row.dni_trabajador}</td>
 	                <td data-codigo="${row.cod_cargo}">${row.cargo}</td>
+	                <td>${row.correo}</td>
 	                <td><button type="button" class="btn btn-info btn-editar" data-toggle="modal" data-target="#modalTrabajador">Editar</button></td>
 	                <td><button type="button" class="btn btn-danger btn-eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button></td>
 	            </tr>
@@ -151,7 +153,15 @@
 				    <select class="form-control comboCargo" name="cargo">
 				      <option value=" ">[Seleccione Cargo]</option>
 				    </select>
-				  </div>				  
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Correo</label>
+				    <input type="text" class="form-control" id="idCorreo" name="correo" placeholder="Ingresar Correo">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Contraseña</label>
+				    <input type="text" class="form-control" id="idPsw" name="psw" placeholder="Ingresar Contraseña">
+				  </div>			  		  
 				  <div class="modal-footer">
 			        <button type="submit" class="btn btn-primary">Guardar</button>
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cerrar">Cerrar</button>			        

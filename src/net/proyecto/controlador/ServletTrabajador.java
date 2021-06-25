@@ -51,7 +51,7 @@ public class ServletTrabajador extends HttpServlet {
 		request.getRequestDispatcher("/trabajador.jsp").forward(request, response);
 	}
 	private void guardar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cod,nom,pat,mat,dir,dni,codCargo;
+		String cod,nom,pat,mat,dir,dni,codCargo,correo,psw;
 		cod=request.getParameter("codigo");
 		nom=request.getParameter("nombre");
 		pat=request.getParameter("paterno");
@@ -59,6 +59,8 @@ public class ServletTrabajador extends HttpServlet {
 		dir=request.getParameter("direccion");
 		dni=request.getParameter("dni");
 		codCargo=request.getParameter("cargo");
+		correo=request.getParameter("correo");
+		psw=request.getParameter("psw");
 		//PASO 2: crear objeto de la clase Docente
 		Trabajador bean=new Trabajador();
 		//PASO 3: asignar valor a los atributos del objeto "bean" con las variables
@@ -69,7 +71,9 @@ public class ServletTrabajador extends HttpServlet {
 		bean.setDir_trabajador(dir);
 		bean.setDni_trabajador(dni);
 		bean.setCod_cargo(Integer.parseInt(codCargo));
-
+		bean.setCorreo(correo);
+		bean.setClave(psw);
+		
 		if(bean.getCod_trabajador()==0) {
 			//invocar al método save
 			int salida;
