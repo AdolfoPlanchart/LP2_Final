@@ -38,6 +38,7 @@ public class MySqlTrabajadorDAO implements TrabajadorDAO {
 				bean.setDni_trabajador(rs.getString(6));
 				bean.setCargo(rs.getString(7));
 				bean.setCod_cargo(rs.getInt(8));
+				bean.setCorreo(rs.getString(9));
 				
 				lista.add(bean);
 			}
