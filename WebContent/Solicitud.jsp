@@ -1,4 +1,4 @@
-
+<jsp:include page="/menu.jsp"></jsp:include>
 <!-- referenciar libreria JSTL pata trabajar con la sub-libreria CORE-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -109,7 +109,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Trabajadorn</label>
-				    <select class="form-control" id="idtrabajador" name="traba">
+				    <select class="form-control" id="idtrabajador" name="codTrabajador">
 				      <option value=" ">[Seleccione Condición]</option>
 				    </select>
 				  </div>	
@@ -189,14 +189,13 @@
 			nom=$(this).parents("tr").find("td")[1].innerHTML;
 			pat=$(this).parents("tr").find("td")[2].innerHTML;
 			mat=$(this).parents("tr").find("td")[3].innerHTML;
-			
+			cod_trabajador=$(this).parents("tr").find("td")[4].innerHTML;
 			//mostrar los valores de las variables en los controles(cajas y select)
 			$("#idCodigo").val(cod);
 			$("#idNombres").val(nom);
 			$("#idPaterno").val(pat);
 			$("#idMaterno").val(mat);
-			
-		
+			$("#idtrabajador").val(cod_trabajador);
 		})
 		
 		//asignar evento click a los botones con clase "btn-eliminar"

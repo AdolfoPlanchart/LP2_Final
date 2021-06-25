@@ -113,10 +113,10 @@ public class ServletSolicitudCrud extends HttpServlet {
 			salida=sSolicitud.actualizar(bean);
 			//validar salida
 			if(salida>0) {// SE ACTUALIZO CORRECTAMENTE
-				request.setAttribute("MENSAJE","Docente actualizado");
+				request.setAttribute("MENSAJE","Solicitud actualizada");
 			}
 			else {// ERROR AL ACTUALIZAR
-				request.setAttribute("MENSAJE","Error al actualizar docente");
+				request.setAttribute("MENSAJE","Error al actualizar solicitud");
 			}
 		}
 		listado(request,response);
