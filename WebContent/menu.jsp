@@ -15,7 +15,7 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  	  <div class="navbar-header">
 		       <div class="navbar-header">
-	     		 <a class="navbar-brand" href="#">SERPRODAT</a>
+	     		 <a class="navbar-brand" href="#">Proyecto LP2</a>
 	  			</div>
 	  	</div>
 	  
@@ -24,7 +24,7 @@
 	
 		   <c:forEach items="${sessionScope.MENUS}" var="bean">
 			    <li class="nav-item">
-			      <a class="nav-link" href="${bean.url}">${bean.nombre}</a>
+			      <a class="nav-link" href="${bean.url}">${bean.des_menu}</a>
 			    </li>
 			</c:forEach>
 	
@@ -34,10 +34,11 @@
 		  <div class="navbar-nav ml-auto">
 		  		
 		     	<span class="nav-item nav-link">
-		     	       	${sessionScope.DATOS}
+		     	       	${sessionScope.DATOS.getNom_trabajador()}
+		     	       	${sessionScope.DATOS.getApe_pat_trabajador()}
 		     	</span>  
 		     
-		        <a href="ServletUsuario?ACCION=CERRAR" class="nav-item nav-link">Cerar Sesión</a>
+		        <a href="ServletTrabajador?ACCION=LOGOUT" class="nav-item nav-link">Cerrar Sesión</a>
 	      </div>
     </div>
 	</nav>
