@@ -1,6 +1,7 @@
 package net.proyecto.fabrica;
 
 import net.proyecto.dao.MySqlCargoDAO;
+import net.proyecto.dao.MySqlExpedienteDAO;
 import net.proyecto.dao.MySqlSolicitudDAO;
 import net.proyecto.dao.MySqlTrabajadorDAO;
 import net.proyecto.interfaz.CargoDAO;
@@ -26,8 +27,8 @@ public class MySqlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public ExpedienteDAO getExpediente() {
+	public ExpedienteDAO getExpedienteDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return new MySqlExpedienteDAO();
 	}
 }

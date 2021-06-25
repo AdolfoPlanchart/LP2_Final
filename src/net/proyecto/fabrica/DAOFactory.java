@@ -15,7 +15,7 @@ public abstract class DAOFactory {
     public abstract TrabajadorDAO getTrabajadorDAO();
     public abstract CargoDAO getCargoDAO();
     public abstract SolicitudDAO getSolicitudDAO();
-    public abstract ExpedienteDAO getExpediente();
+    public abstract ExpedienteDAO getExpedienteDAO();
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){
        	case MYSQL:

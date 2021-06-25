@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import net.proyecto.entidad.Expediente;
+import net.proyecto.entidad.ExpedienteGastos;
 import net.proyecto.service.ExpedienteService;
 
 
@@ -28,14 +29,13 @@ public class ServletExpedienteJSON extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Expediente> lista=sExpediente.listarExpedientes();
+		List<ExpedienteGastos> lista=sExpediente.listarTodos();
 		Gson gson=new Gson();
 		String json;
 		json=gson.toJson(lista);
 		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter salida=response.getWriter();
 		salida.println(json);
-		
 	}
 
 }

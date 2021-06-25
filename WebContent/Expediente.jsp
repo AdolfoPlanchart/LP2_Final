@@ -1,4 +1,3 @@
-
 <!-- referenciar libreria JSTL pata trabajar con la sub-libreria CORE-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -58,10 +57,10 @@
         <thead>
             <tr>
                 <th>CÓDIGO</th>
+                <th>SOLICITUD</th>
                 <th>FECHA</th>
                 <th>DESCRIPCION</th>
-                <th>ESTADO</th>
-                 <th>TRABAJADOR</th>
+                 <th>ESTADO</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -71,10 +70,10 @@
         	<c:forEach items="${requestScope.docentes}" var="row">
 	            <tr>
 	                <td>${row.codigo}</td>
-	                <td>${row.fecha}</td>
-	                <td>${row.descripcion}</td>   
+	                <td>${row.codigoSolicitud}</td>
+	                <td>${row.fecha}</td>   
+	                <td>${row.descripcion}</td>
 	                <td>${row.estado}</td>
-	                <td>${row.codigoTrabajador}</td>
 	                <td><button type="button" class="btn btn-info btn-editar" data-toggle="modal" data-target="#modalDocente">Editar</button></td>
 	                <td><button type="button" class="btn btn-danger btn-eliminar" data-toggle="modal" data-target="#modalEliminar">Eliminar</button></td>
 	            </tr>
@@ -88,17 +87,23 @@
 		  <div class="modal-dialog">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="staticBackdropLabel">DOCENTE</h5>
+		        <h5 class="modal-title" id="staticBackdropLabel">EXPEDIENTEGASTOS</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form id="formDocente"  action="ServletSolicitudCrud?ACCION=REGISTRAR" method="post">
+		        <form id="formDocente"  action="ServletExpediente?ACCION=REGISTRAR" method="post">
 		         <div class="form-group">
 				    <label for="exampleInputEmail1">Código</label>
 				    <input type="text" class="form-control" id="idCodigo" name="codigo" value="0" readonly>
 				  </div>
+				    <div class="form-group">
+				    <label for="exampleInputPassword1">SOLICITUD</label>
+				    <select class="form-control" id="idtrabajador" name="soli">
+				      <option value=" ">[Seleccione Condición]</option>
+				    </select>
+				  </div>	
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Fecha</label>
 				    <input type="text" class="form-control" id="idNombres" name="fecha" placeholder="Ingresar nombres">
@@ -107,12 +112,6 @@
 				    <label for="exampleInputPassword1">Descripcion</label>
 				    <input type="text" class="form-control" id="idPaterno" name="des" placeholder="Ingresar apellido paterno">
 				  </div>
-				  <div class="form-group">
-				    <label for="exampleInputPassword1">Trabajadorn</label>
-				    <select class="form-control" id="idtrabajador" name="traba">
-				      <option value=" ">[Seleccione Condición]</option>
-				    </select>
-				  </div>	
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Estado</label>
 				    <input type="text" class="form-control" id="idPaterno" name="estado" placeholder="Ingresar apellido paterno">
@@ -140,7 +139,7 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		        <form id="formDocente"  action="ServletSolicitudCrud?ACCION=Eliminar" method="post">
+		        <form id="formDocente"  action="ServletExpediente?ACCION=Eliminar" method="post">
 		         	    <input type="hidden" class="form-control" id="idCodigoEliminar" name="codigo">
 				  SEGURO DE ELIMINAR ?
 				  <div class="modal-footer">
@@ -195,8 +194,6 @@
 			$("#idNombres").val(nom);
 			$("#idPaterno").val(pat);
 			$("#idMaterno").val(mat);
-			
-		
 		})
 		
 		//asignar evento click a los botones con clase "btn-eliminar"
@@ -229,10 +226,10 @@
 					caso no esiten parámetros debido a que no existe "request.getParameter"
 				3. respuesta del "ServletCondicionJSON"	
 			*/
-			$.getJSON("ServletTrabajadorJSON",{},function(response){
+			$.getJSON("ServletSolicitudJson",{},function(response){
 				//bucle para realizar recorrido sobre "response"
 				$.each(response,function(index,item){
-					$("#idtrabajador").append("<option value='"+item.cod_trabajador+"'>"+item.nom_trabajador+"</option>");
+					$("#idtrabajador").append("<option value='"+item.codigo+"'>"+item.codigo+"</option>");
 				})
 				
 			})
