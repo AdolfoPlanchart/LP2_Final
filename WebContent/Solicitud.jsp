@@ -101,21 +101,26 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputEmail1">Fecha</label>
-				    <input type="text" class="form-control" id="idNombres" name="fecha" placeholder="Ingresar nombres">
+				    <input type="text" class="form-control" id="idNombres" name="fecha" placeholder="Ingresar Fecha">
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Descripcion</label>
-				    <input type="text" class="form-control" id="idPaterno" name="des" placeholder="Ingresar apellido paterno">
+				    <input type="text" class="form-control" id="idPaterno" name="des" placeholder="Ingresar Descripcion">
 				  </div>
 				  <div class="form-group">
-				    <label for="exampleInputPassword1">Trabajadorn</label>
+				    <label for="exampleInputPassword1">Trabajador</label>
 				    <select class="form-control" id="idtrabajador" name="codTrabajador">
-				      <option value=" ">[Seleccione Condición]</option>
+				      <option value=" ">[Seleccione Trabajador]</option>
 				    </select>
 				  </div>	
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Estado</label>
-				    <input type="text" class="form-control" id="idPaterno" name="estado" placeholder="Ingresar apellido paterno">
+				    <select class="form-control" id="idEstado" name="estado">
+				      <option value=" ">[Seleccione Estado]</option>
+				      <option value="Pendiente">Pendiente</option>
+				      <option value="Aprobado">Aprobado</option>
+				      <option value="Rechazado">Rechazado</option>
+				    </select>
 				  </div>			  
 				  <div class="modal-footer">
 			        <button type="submit" class="btn btn-primary">Guardar</button>
@@ -155,15 +160,7 @@
 		</div>
   		<!-- FIN - Modal PARA ELIMINAR DOCENTE-->  		
   		
-  		
-  		
-  		
-  		
-  		
-  		
-  		
-  		
-  		
+
 	</div>
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -177,25 +174,25 @@
 	<script>
 		$(document).ready(function() {
 		    $('#tableDocentes').DataTable();
-		    llenarCondicion();
+		    llenarTrabajadores();
 		} );
 	
 		//asignar evento click a los botones con clase "btn-editar"
 		$(document).on("click",".btn-editar",function(){
 			//variables
-			var cod,nom,pat,mat;
+			var cod,fec,desc,est;
 			//obtener valores de la fila actual según donde se haga clic al botón editar
 			cod=$(this).parents("tr").find("td")[0].innerHTML;
-			nom=$(this).parents("tr").find("td")[1].innerHTML;
-			pat=$(this).parents("tr").find("td")[2].innerHTML;
-			mat=$(this).parents("tr").find("td")[3].innerHTML;
+			fec=$(this).parents("tr").find("td")[1].innerHTML;
+			desc=$(this).parents("tr").find("td")[2].innerHTML;
+			est=$(this).parents("tr").find("td")[3].innerHTML;
 			cod_trabajador=$(this).parents("tr").find("td")[4].innerHTML;
 			//mostrar los valores de las variables en los controles(cajas y select)
 			$("#idCodigo").val(cod);
-			$("#idNombres").val(nom);
-			$("#idPaterno").val(pat);
-			$("#idMaterno").val(mat);
+			$("#idNombres").val(fec);
+			$("#idPaterno").val(desc);
 			$("#idtrabajador").val(cod_trabajador);
+			$("#idEstado").val(est);
 		})
 		
 		//asignar evento click a los botones con clase "btn-eliminar"
@@ -211,7 +208,7 @@
 		//asignar evento click al botón con ID "btn-cerrar"
 		$(document).on("click","#btn-cerrar",function(){
 			 //resetear validación 
-			 $('#formDocente'). data("bootstrapValidator").resetForm(true);
+			 $('#formDocente').data("bootstrapValidator").resetForm(true);
 			 //limpiar cajas
 			 $('#formDocente').trigger("reset");
 			 //asignar "0" a la caja con ID "idCodigo" 
@@ -219,7 +216,7 @@
 		})
 		
 		//implementar función para llenar el select con ID "idCondicion"
-		function llenarCondicion(){
+		function llenarTrabajadores(){
 			//función en JQUERY que permite leer un JSON
 			/*
 				la función getJSON tiene 3 parámetros:
@@ -239,10 +236,6 @@
 		}
 		
 	</script>
-	
-	
-	  
-</script>
 	
 </body>
 </html>

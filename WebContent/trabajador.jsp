@@ -361,7 +361,24 @@
         		 				message:'Campo Cargo es obligatorio'
         		 			}
         		 		}
-        		 	}	 	
+        		 	},
+        		 	correo:{
+        		 		validators:{
+        		 			notEmpty:{
+        		 				message:'Campo Correo es obligatorio\n'
+        		 			},
+        		 			emailAddress:{
+        		 				message:'No es un correo valido'
+        		 			}
+        		 		}
+        		 	},
+        		 	psw:{
+        		 		validators:{
+        		 			notEmpty:{
+        		 				message:'Campo Contraseña es Obligatorio'
+        		 			}
+        		 		}
+        		 	}
         	 }
         });   
 			
