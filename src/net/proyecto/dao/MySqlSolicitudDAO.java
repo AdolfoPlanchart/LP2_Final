@@ -60,15 +60,15 @@ public class MySqlSolicitudDAO  implements SolicitudDAO{
 			//1
 			cn=ConnMySQL.getConexion();
 			//2
-			String sql="update tb_solicitud set ? where cod_solicitud=?"; 
+			String sql="update tb_solicitud set fech_solicitud=?,desc_solicitud=?,cod_trabajador=?,estado=? where cod_solicitud=?"; 
 			//3
 			pstm=cn.prepareStatement(sql);
 			//4 
 			pstm.setString(1, bean.getFecha());
 			pstm.setString(2, bean.getDescripcion());
 			pstm.setInt(3, bean.getCodigoTrabajador());
-			pstm.setInt(4, bean.getCodigo());
-			
+			pstm.setString(4, bean.getEstado());
+			pstm.setInt(5, bean.getCodigo());
 			//5
 			salida=pstm.executeUpdate();
 		} catch (SQLException | ClassNotFoundException e) {

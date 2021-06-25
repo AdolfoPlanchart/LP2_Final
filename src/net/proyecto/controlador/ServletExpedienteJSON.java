@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import net.proyecto.entidad.Expediente;
 import net.proyecto.entidad.ExpedienteGastos;
 import net.proyecto.service.ExpedienteService;
 

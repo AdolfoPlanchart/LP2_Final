@@ -1,3 +1,4 @@
+<jsp:include page="/menu.jsp"></jsp:include>
 <!-- referenciar libreria JSTL pata trabajar con la sub-libreria CORE-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
